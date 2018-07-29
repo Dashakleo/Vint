@@ -1,0 +1,89 @@
+.house-block {
+  margin-right: 71px;
+  position: relative;
+}
+
+.house-container {
+  padding-top: 85px;
+  padding-left: 117px;
+  display: flex;
+}
+
+.window {
+  stroke-linejoin: round;
+  stroke-width: 5px;
+}
+
+.house {
+  position: relative;
+  --active-wall-color: transparent;
+  --grad-color: #48A7F7;
+  --second-grad-color: #4289FB;
+  &_day {
+    --grad-color: #FCDE56;
+    --second-grad-color: #FFD30B;
+    --door-color: #994404;
+    --balcony-color: #613007;
+    --wall-color: linear-gradient(180deg, #FCDE56 0%, #FFDD41 100%);
+    --brick-color: #4D2D19;
+    --window-color: #B4DCED;
+    --frame-color: #613007;
+  }
+}
+
+.daytime {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.daytime__toggle {
+  cursor: pointer;
+  transform: translate3d(0, 0, 0);
+  border-radius: 100px;
+  &:before {
+    content: url(../img/moon.svg);
+    position: relative;
+    width: 133px;
+    height: 50px;
+    display: block;
+    padding-top: 4px;
+    padding-left: 67px;
+    box-sizing: border-box;
+    background: #393A59;
+    box-shadow: 0 4px 34px rgba(0, 0, 0, 0.05);
+    border-radius: 100px;
+    transition: background .2s ease;
+  }
+  span {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 42px;
+    height: 42px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 34px rgba(0, 0, 0, 0.05);
+    transition: all .2s ease;
+  }
+}
+#timeOfDay {
+  position: absolute;
+  opacity: 0;
+}
+#timeOfDay:checked + .daytime__toggle {
+  &:before {
+    content: url(../img/sun.svg);
+    padding-left: 20px;
+    background: #ABCADD;
+  }
+  span {
+    transform: translateX(83px);
+    transition: all .2s cubic-bezier(.8,.4,.3,1.25);
+  }
+}
+
+
+
+
+

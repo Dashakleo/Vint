@@ -1,0 +1,76 @@
+.person {
+  background: url("../img/female.svg") no-repeat center bottom;
+  position: absolute;
+  width: 97px;
+  height: 87px;
+  left: 45px;
+  &_male {
+    background-image: url("../img/male.svg");
+  }
+}
+.lodger-block {
+  height: 100%;
+  align-items: center;
+  display: none;
+}
+
+.lodger__name {
+  padding-right: 50px;
+  height: 31px;
+  line-height: 31px;
+  background: url("../img/male.svg") no-repeat center right/contain;
+  &_female {
+    background-image: url("../img/female.svg") ;
+  }
+}
+
+.lodger__close {
+  position: relative;
+  width: 19px;
+  height: 19px;
+  opacity: 0.3;
+}
+.lodger__close:hover {
+  opacity: 1;
+}
+.lodger__close:before, .lodger__close:after {
+  position: absolute;
+  left: 8px;
+  top: -5px;
+  content: ' ';
+  height: 27px;
+  width: 2px;
+  background-color: #333;
+}
+.lodger__close:before {
+  transform: rotate(45deg);
+}
+.lodger__close:after {
+  transform: rotate(-45deg);
+}
+
+.lodger {
+  display: flex;
+  padding: 28px 35px 4px 35px;
+  background-color: #FBFCFD;
+}
+
+.lodger__field{
+
+  &_left {
+    width: 230px;
+  }
+}
+.field__item {
+  margin-bottom: 40px;
+}
+.field-name_lodger {
+  width: 181px;
+}
+
+.field-name__value {
+  font-size: 20px;
+  color: #333333;
+  margin-top: 10px;
+}
+

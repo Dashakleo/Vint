@@ -1,0 +1,23 @@
+.button {
+  height: 50px;
+  width: 341px;
+  border: none;
+  border-radius: 100px;
+  background: linear-gradient(180deg, #48A8F6 0%, #4288FA 100%);
+  box-shadow: 0 4px 34px rgba(0, 0, 0, 0.05);
+  color: white;
+  font-size: 18px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  &:active {
+    box-shadow: 0 4px 34px rgba(0, 0, 0, 0.05) inset;
+  }
+}
+
+.button-reset {
+  width: 209px;
+  color: black;
+  background: #EBEAEA;
+  margin-right: 20px;
+}

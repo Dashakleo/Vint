@@ -1,0 +1,190 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title ЖК от Винта
+        meta(content="" name="author")
+        meta(content="" name="description")
+        meta(content="" name="keywords")
+        meta(content="width=device-width, initial-scale=1" name="viewport")
+        meta(content="ie=edge" http-equiv="x-ua-compatible")
+
+        //Fonts
+        link(href="https://fonts.googleapis.com/css?family=Roboto:500&amp;subset=cyrillic" rel="stylesheet" )
+
+        link(rel='stylesheet' href='./assets/css/foundation.css')
+        link(rel='stylesheet' href='./assets/css/app.css')
+        link(rel='stylesheet' href='./assets/css/sprite.css')
+
+        <!--[if lt IE 9]>
+        script(src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js")
+        <![endif]-->
+
+    body
+        .container.house-container
+            .house-block
+                svg(width="460" height="774").house#house
+                    defs
+                        linearGradient#linear-gradient_up(x1="0" x2="0" y1="0" y2="1")
+                            stop(offset="0%" stop-color="var(--grad-color)")
+                            stop(offset="100%" stop-color="var(--second-grad-color)")
+                        linearGradient#linear-gradient_down(x1="0" x2="0" y1="0" y2="1")
+                            stop(offset="0%" stop-color="var(--second-grad-color)")
+                            stop(offset="100%" stop-color="var(--grad-color)")
+                        symbol#floor
+                            rect(width=86 height=86 fill= "var(--door-color, #6D7EFA)" y=20 x=18)
+                            rect(width=86 height=86 fill= "var(--door-color, #6D7EFA)" y=20 x=357)
+                            rect(width=29 height=34 fill= "var(--balcony-color, #4289FB)" y=77)
+                            rect(width=29 height=34 fill= "var(--balcony-color, #4289FB)" x= 431 y=77)
+                            rect(width=410 height=131 x=25)
+                            rect(width=92 height=82 x=47 y=22 class='window' fill= "var(--window-color, #F8BCCA)" stroke= "var(--frame-color, #3E3FC4)")
+                            rect(width=92 height=82 x=182 y=22 class='window' fill= "var(--window-color, #F8BCCA)" stroke= "var(--frame-color, #3E3FC4)")
+                            rect(width=92 height=82 x=316 y=22 class='window' fill= "var(--window-color, #F8BCCA)" stroke= "var(--frame-color, #3E3FC4)")
+                    rect(height=13 width=416 y=32 x=23 fill='var(--balcony-color, rgba(71, 166, 247, 0.45)')
+                    rect(height=32 width=434 y=0 x=13 fill='var(--brick-color, #4289FB')
+                    use(xlink:href="#floor" class='floor' y=45 fill="url(#linear-gradient_up)" data-floor=5)
+                    use(xlink:href="#floor" class='floor' y=176 fill="url(#linear-gradient_down)" data-floor=4)
+                    use(xlink:href="#floor" class='floor' y=307 fill="url(#linear-gradient_up)" data-floor=3)
+                    use(xlink:href="#floor" class='floor' y=438 fill="url(#linear-gradient_down)" data-floor=2)
+                    use(xlink:href="#floor" class='floor' y=569 fill="url(#linear-gradient_up)" data-floor=1)
+                    rect(height=69 width=411 fill='var(--brick-color, #6D7EFA' y=703 x=25)
+                    use(xlink:href='./assets/img/sprite.svg#bricks' fill='var(--balcony-color, #4647CC)' y=707 x=25 width=412 height=60.8)
+                .daytime
+                    input(type='checkbox')#timeOfDay
+                    label(for='timeOfDay').daytime__toggle
+                        span
+
+
+            .information
+                .information-block
+                    h1.h1 ЖК от Винта
+                    nav.information__tabs
+                        .information__slide.slide
+                        .information__tab.information__tab_active#addTab Добавить жителя
+                        .information__tab#filterTab Фильтр
+                    .information__form-block
+                        .information__form.add-form
+                            .arrow-up.arrow-up_add
+                            .form__header
+                                h3.h3 Добавить жителя
+                            form.form__content#addForm
+                                .form__item
+                                    .field-name   Имя
+                                    input.field(type='text' id ='name' pattern='[^0-9]\{1,15\}' required)
+                                .form__item
+                                    .field-name   Пол
+                                    .radio-block
+                                        .slide_gender.slide_gender_add.slide
+                                        .radio__item
+                                            input.field.radio(form='addForm' type='radio' name='gender' id='male' required )
+                                            label(for='male') Мужской
+                                        .radio__item
+                                            input.field.radio(form='addForm' type='radio' name='gender' id='female' required)
+                                            label(for='female') Женский
+                                .form__item
+                                    .field-name  Этаж
+                                    input.field(form='addForm' type='text' id='floorNumber' disabled required)
+                                .form__item
+                                    .field-name   Кол-во комнат
+                                    svg.select__arrow
+                                        use(xlink:href='/assets/img/sprite.svg#arrow')
+                                    select.field.select(form='addForm' required id='rooms')
+                                        option(value='') Выбрать
+                                        option(value='1') 1
+                                        option(value='2') 2
+                                        option(value='3') 3
+                                .form__item
+                                    .field-name   Дополнительно
+                                    .checkbox-block
+                                        .checkbox__item
+                                            input(form='addForm' type='checkbox' class='checkbox' value='Домашние животные' name='other' id ='pets')
+                                            label(for='pets') Домашние животные
+                                        .checkbox__item
+                                            input(form='addForm' type='checkbox' class='checkbox' value='ТВ' name='other' id ='tv')
+                                            label(for='tv') ТВ
+                                        .checkbox__item
+                                            input(form='addForm' type='checkbox' class='checkbox' value='Интернет' name='other' id ='internet')
+                                            label(for='internet') Интернет
+                                .form__item
+                                    .field-name   Сколько человек проживает
+                                    svg.select__arrow
+                                        use(xlink:href='/assets/img/sprite.svg#arrow')
+                                    select(required form='addForm' id='lodgersCount').field.select
+                                        option(value='') Выбрать
+                                        option(value='1') 1
+                                        option(value='2') 2
+                                        option(value='3') 3
+                                        option(value='4') 4
+                                        option(value='5') 5
+                            .form__footer
+                                button.button.button-reset#addReset(type='reset' form='addForm') Сбросить
+                                button.button#addSubmit(type='submit' form='addForm') Добавить
+
+                        .information__form.filter-form
+                            .arrow-up.arrow-up_filter
+                            .form__header
+                                h3.h3 Фильтр
+                            form.form__content#filterForm
+                                .form__item
+                                    .field-name   Пол
+                                    .radio-block
+                                        .slide_gender.slide_filter.slide
+                                        .radio__item
+                                            input.field.radio(form='filterForm' type='radio' name='gender' id='maleFilter')
+                                            label(for='maleFilter') Мужской
+                                        .radio__item
+                                            input.field.radio(form='filterForm' type='radio' name='gender' id='femaleFilter')
+                                            label(for='femaleFilter') Женский
+                                .form__item
+                                    .field-name   Кол-во комнат
+                                    svg.select__arrow
+                                        use(xlink:href='/assets/img/sprite.svg#arrow')
+                                    select.field.select(form='filterForm')
+                                        option(value='') Выбрать
+                                        option(value='1') 1
+                                        option(value='2') 2
+                                        option(value='3') 3
+                                .form__item
+                                    .field-name   Дополнительно
+                                    .checkbox-block
+                                        .checkbox__item
+                                            input(form='filterForm' type='checkbox' class='checkbox' id ='filterPets' value="pets")
+                                            label(for='filterPets') Домашние животные
+                                        .checkbox__item
+                                            input(form='filterForm' type='checkbox' class='checkbox' id ='filterTV' value="tv")
+                                            label(for='filterTV') ТВ
+                                        .checkbox__item
+                                            input(form='filterForm' type='checkbox' class='checkbox' id ='filterInternet' value="internet")
+                                            label(for='filterInternet') Интернет
+                                .form__item
+                                    .field-name  Этаж
+                                    input.field(form='filterForm' type='text' placeholder='Введите')
+                            .form__footer
+                                button.button#filterReset(form='filterForm' type='reset') Сброс фильтров
+
+                .lodger-block
+                    .information__form
+                        .form__header
+                            h3.h3.lodger__name#lodgerName Name
+                            span.lodger__close#lodgerClose
+                        .lodger
+                            .lodger__field.lodger__field_left
+                                .field__item
+                                    .field-name.field-name_lodger Пол
+                                    .field-name__value#lodgerGender Мужской
+                                .field__item
+                                    .field-name.field-name_lodger Кол-во комнат
+                                    .field-name__value#lodgerRooms 3
+                                .field__item
+                                    .field-name.field-name_lodger Сколько человек проживает
+                                    .field-name__value#lodgerCount 5
+                            .lodger__field
+                                .field__item
+                                    .field-name.field-name_lodger Этаж
+                                    .field-name__value#lodgerFloor 3
+                                .field__item
+                                    .field-name.field-name_lodger Дополнительно
+                                    .field-name__value#lodgerOther Интернет, Домашние животные
+
+        //script(src='/assets/js/foundation.js')
+        script(type="module" src='./assets/js/app.js')

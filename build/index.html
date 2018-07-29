@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ЖК от Винта</title>
+    <meta content="" name="author">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500&amp;amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/foundation.css">
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/sprite.css"><!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><![endif]-->
+  </head>
+  <body>
+    <div class="container house-container">
+      <div class="house-block">
+        <svg class="house" width="460" height="774" id="house">
+          <defs>
+            <linearGradient id="linear-gradient_up" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="var(--grad-color)"></stop>
+              <stop offset="100%" stop-color="var(--second-grad-color)"></stop>
+            </linearGradient>
+            <linearGradient id="linear-gradient_down" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="var(--second-grad-color)"></stop>
+              <stop offset="100%" stop-color="var(--grad-color)"></stop>
+            </linearGradient>
+            <symbol id="floor">
+              <rect width="86" height="86" fill="var(--door-color, #6D7EFA)" y="20" x="18"></rect>
+              <rect width="86" height="86" fill="var(--door-color, #6D7EFA)" y="20" x="357"></rect>
+              <rect width="29" height="34" fill="var(--balcony-color, #4289FB)" y="77"></rect>
+              <rect width="29" height="34" fill="var(--balcony-color, #4289FB)" x="431" y="77"></rect>
+              <rect width="410" height="131" x="25"></rect>
+              <rect class="window" width="92" height="82" x="47" y="22" fill="var(--window-color, #F8BCCA)" stroke="var(--frame-color, #3E3FC4)"></rect>
+              <rect class="window" width="92" height="82" x="182" y="22" fill="var(--window-color, #F8BCCA)" stroke="var(--frame-color, #3E3FC4)"></rect>
+              <rect class="window" width="92" height="82" x="316" y="22" fill="var(--window-color, #F8BCCA)" stroke="var(--frame-color, #3E3FC4)"></rect>
+            </symbol>
+          </defs>
+          <rect height="13" width="416" y="32" x="23" fill="var(--balcony-color, rgba(71, 166, 247, 0.45)"></rect>
+          <rect height="32" width="434" y="0" x="13" fill="var(--brick-color, #4289FB"></rect>
+          <use class="floor" xlink:href="#floor" y="45" fill="url(#linear-gradient_up)" data-floor="5"></use>
+          <use class="floor" xlink:href="#floor" y="176" fill="url(#linear-gradient_down)" data-floor="4"></use>
+          <use class="floor" xlink:href="#floor" y="307" fill="url(#linear-gradient_up)" data-floor="3"></use>
+          <use class="floor" xlink:href="#floor" y="438" fill="url(#linear-gradient_down)" data-floor="2"></use>
+          <use class="floor" xlink:href="#floor" y="569" fill="url(#linear-gradient_up)" data-floor="1"></use>
+          <rect height="69" width="411" fill="var(--brick-color, #6D7EFA" y="703" x="25"></rect>
+          <use xlink:href="./assets/img/sprite.svg#bricks" fill="var(--balcony-color, #4647CC)" y="707" x="25" width="412" height="60.8"></use>
+        </svg>
+        <div class="daytime">
+          <input type="checkbox" id="timeOfDay">
+          <label class="daytime__toggle" for="timeOfDay"><span></span></label>
+        </div>
+      </div>
+      <div class="information">
+        <div class="information-block">
+          <h1 class="h1">ЖК от Винта</h1>
+          <nav class="information__tabs">
+            <div class="information__slide slide"></div>
+            <div class="information__tab information__tab_active" id="addTab">Добавить жителя</div>
+            <div class="information__tab" id="filterTab">Фильтр</div>
+          </nav>
+          <div class="information__form-block">
+            <div class="information__form add-form">
+              <div class="arrow-up arrow-up_add"></div>
+              <div class="form__header">
+                <h3 class="h3">Добавить жителя</h3>
+              </div>
+              <form class="form__content" id="addForm">
+                <div class="form__item">
+                  <div class="field-name">  Имя</div>
+                  <input class="field" type="text" id="name" pattern="[^0-9]{1,15}" required>
+                </div>
+                <div class="form__item">
+                  <div class="field-name">  Пол</div>
+                  <div class="radio-block">
+                    <div class="slide_gender slide_gender_add slide"></div>
+                    <div class="radio__item">
+                      <input class="field radio" form="addForm" type="radio" name="gender" id="male" required>
+                      <label for="male">Мужской</label>
+                    </div>
+                    <div class="radio__item">
+                      <input class="field radio" form="addForm" type="radio" name="gender" id="female" required>
+                      <label for="female">Женский</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form__item">
+                  <div class="field-name"> Этаж</div>
+                  <input class="field" form="addForm" type="text" id="floorNumber" disabled required>
+                </div>
+                <div class="form__item">
+                  <div class="field-name">  Кол-во комнат</div>
+                  <svg class="select__arrow">
+                    <use xlink:href="/assets/img/sprite.svg#arrow"></use>
+                  </svg>
+                  <select class="field select" form="addForm" required id="rooms">
+                    <option value="">Выбрать</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+                <div class="form__item">
+                  <div class="field-name">  Дополнительно</div>
+                  <div class="checkbox-block">
+                    <div class="checkbox__item">
+                      <input class="checkbox" form="addForm" type="checkbox" value="Домашние животные" name="other" id="pets">
+                      <label for="pets">Домашние животные</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input class="checkbox" form="addForm" type="checkbox" value="ТВ" name="other" id="tv">
+                      <label for="tv">ТВ</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input class="checkbox" form="addForm" type="checkbox" value="Интернет" name="other" id="internet">
+                      <label for="internet">Интернет</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form__item">
+                  <div class="field-name">  Сколько человек проживает</div>
+                  <svg class="select__arrow">
+                    <use xlink:href="/assets/img/sprite.svg#arrow"></use>
+                  </svg>
+                  <select class="field select" required form="addForm" id="lodgersCount">
+                    <option value="">Выбрать</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+              </form>
+              <div class="form__footer">
+                <button class="button button-reset" id="addReset" type="reset" form="addForm">Сбросить</button>
+                <button class="button" id="addSubmit" type="submit" form="addForm">Добавить</button>
+              </div>
+            </div>
+            <div class="information__form filter-form">
+              <div class="arrow-up arrow-up_filter"></div>
+              <div class="form__header">
+                <h3 class="h3">Фильтр</h3>
+              </div>
+              <form class="form__content" id="filterForm">
+                <div class="form__item">
+                  <div class="field-name">  Пол</div>
+                  <div class="radio-block">
+                    <div class="slide_gender slide_filter slide"></div>
+                    <div class="radio__item">
+                      <input class="field radio" form="filterForm" type="radio" name="gender" id="maleFilter">
+                      <label for="maleFilter">Мужской</label>
+                    </div>
+                    <div class="radio__item">
+                      <input class="field radio" form="filterForm" type="radio" name="gender" id="femaleFilter">
+                      <label for="femaleFilter">Женский</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form__item">
+                  <div class="field-name">  Кол-во комнат</div>
+                  <svg class="select__arrow">
+                    <use xlink:href="/assets/img/sprite.svg#arrow"></use>
+                  </svg>
+                  <select class="field select" form="filterForm">
+                    <option value="">Выбрать</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+                <div class="form__item">
+                  <div class="field-name">  Дополнительно</div>
+                  <div class="checkbox-block">
+                    <div class="checkbox__item">
+                      <input class="checkbox" form="filterForm" type="checkbox" id="filterPets" value="pets">
+                      <label for="filterPets">Домашние животные</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input class="checkbox" form="filterForm" type="checkbox" id="filterTV" value="tv">
+                      <label for="filterTV">ТВ</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input class="checkbox" form="filterForm" type="checkbox" id="filterInternet" value="internet">
+                      <label for="filterInternet">Интернет</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form__item">
+                  <div class="field-name"> Этаж</div>
+                  <input class="field" form="filterForm" type="text" placeholder="Введите">
+                </div>
+              </form>
+              <div class="form__footer">
+                <button class="button" id="filterReset" form="filterForm" type="reset">Сброс фильтров</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lodger-block">
+          <div class="information__form">
+            <div class="form__header">
+              <h3 class="h3 lodger__name" id="lodgerName">Name</h3><span class="lodger__close" id="lodgerClose"></span>
+            </div>
+            <div class="lodger">
+              <div class="lodger__field lodger__field_left">
+                <div class="field__item">
+                  <div class="field-name field-name_lodger">Пол</div>
+                  <div class="field-name__value" id="lodgerGender">Мужской</div>
+                </div>
+                <div class="field__item">
+                  <div class="field-name field-name_lodger">Кол-во комнат</div>
+                  <div class="field-name__value" id="lodgerRooms">3</div>
+                </div>
+                <div class="field__item">
+                  <div class="field-name field-name_lodger">Сколько человек проживает</div>
+                  <div class="field-name__value" id="lodgerCount">5</div>
+                </div>
+              </div>
+              <div class="lodger__field">
+                <div class="field__item">
+                  <div class="field-name field-name_lodger">Этаж</div>
+                  <div class="field-name__value" id="lodgerFloor">3</div>
+                </div>
+                <div class="field__item">
+                  <div class="field-name field-name_lodger">Дополнительно</div>
+                  <div class="field-name__value" id="lodgerOther">Интернет, Домашние животные</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--script(src='/assets/js/foundation.js')-->
+    <script type="module" src="./assets/js/app.js"></script>
+  </body>
+</html>
