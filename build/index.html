@@ -49,6 +49,7 @@
           <rect height="69" width="411" fill="var(--brick-color, #6D7EFA" y="703" x="25"></rect>
           <use xlink:href="./assets/img/sprite.svg#bricks" fill="var(--balcony-color, #4647CC)" y="707" x="25" width="412" height="60.8"></use>
         </svg>
+        <div class="lodgers"></div>
         <div class="daytime">
           <input type="checkbox" id="timeOfDay">
           <label class="daytime__toggle" for="timeOfDay"><span></span></label>
@@ -89,7 +90,7 @@
                 </div>
                 <div class="form__item">
                   <div class="field-name"> Этаж</div>
-                  <input class="field" form="addForm" type="text" id="floorNumber" disabled required>
+                  <input class="field" form="addForm" type="text" id="floorNumber" pattern="[1-5]" required>
                 </div>
                 <div class="form__item">
                   <div class="field-name">  Кол-во комнат</div>
@@ -148,14 +149,14 @@
               <form class="form__content" id="filterForm">
                 <div class="form__item">
                   <div class="field-name">  Пол</div>
-                  <div class="radio-block">
+                  <div class="radio-block" id="genderFilter">
                     <div class="slide_gender slide_filter slide"></div>
                     <div class="radio__item">
-                      <input class="field radio" form="filterForm" type="radio" name="gender" id="maleFilter">
+                      <input class="field radio" form="filterForm" type="radio" name="gender" id="maleFilter" value="male">
                       <label for="maleFilter">Мужской</label>
                     </div>
                     <div class="radio__item">
-                      <input class="field radio" form="filterForm" type="radio" name="gender" id="femaleFilter">
+                      <input class="field radio" form="filterForm" type="radio" name="gender" id="femaleFilter" value="female">
                       <label for="femaleFilter">Женский</label>
                     </div>
                   </div>
@@ -165,7 +166,7 @@
                   <svg class="select__arrow">
                     <use xlink:href="/assets/img/sprite.svg#arrow"></use>
                   </svg>
-                  <select class="field select" form="filterForm">
+                  <select class="field select" form="filterForm" id="filterRooms">
                     <option value="">Выбрать</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -174,24 +175,24 @@
                 </div>
                 <div class="form__item">
                   <div class="field-name">  Дополнительно</div>
-                  <div class="checkbox-block">
+                  <div class="checkbox-block" id="checkboxFilter">
                     <div class="checkbox__item">
-                      <input class="checkbox" form="filterForm" type="checkbox" id="filterPets" value="pets">
+                      <input class="checkbox" form="filterForm" type="checkbox" id="filterPets" value="Домашние животные" data-index="0">
                       <label for="filterPets">Домашние животные</label>
                     </div>
                     <div class="checkbox__item">
-                      <input class="checkbox" form="filterForm" type="checkbox" id="filterTV" value="tv">
+                      <input class="checkbox" form="filterForm" type="checkbox" id="filterTV" value="ТВ" data-index="1">
                       <label for="filterTV">ТВ</label>
                     </div>
                     <div class="checkbox__item">
-                      <input class="checkbox" form="filterForm" type="checkbox" id="filterInternet" value="internet">
+                      <input class="checkbox" form="filterForm" type="checkbox" id="filterInternet" value="Интернет" data-index="2">
                       <label for="filterInternet">Интернет</label>
                     </div>
                   </div>
                 </div>
                 <div class="form__item">
                   <div class="field-name"> Этаж</div>
-                  <input class="field" form="filterForm" type="text" placeholder="Введите">
+                  <input class="field" form="filterForm" type="text" placeholder="Введите" pattern="[1-5]" id="filterFloor">
                 </div>
               </form>
               <div class="form__footer">

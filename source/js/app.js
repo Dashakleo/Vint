@@ -1,6 +1,7 @@
 'use strict';
-import { createLodger, loadLodgers, getLodgers } from './lodgers.js'
-import { generateLodgerDOM, renderLodgers} from "./views.js";
+import {createLodger, loadLodgers, getLodgers} from './lodgers.js'
+import {generateLodgerDOM, renderLodgers} from "./views.js";
+import {setFilters, resetFilters} from './filters.js';
 
 
 //local-storage
@@ -14,22 +15,63 @@ document.querySelector('#addForm').addEventListener('submit', (e) => {
 });
 
 document.querySelector('#lodgerClose').addEventListener('click', () => {
+    document.querySelector('.person_active').classList.remove('person_active');
     document.querySelector('.information-block').style.display = 'block';
     document.querySelector('.lodger-block').style.display = 'none';
 });
 
-document.querySelector('#timeOfDay').addEventListener('change', (e)=> {
+document.querySelector('#timeOfDay').addEventListener('change', (e) => {
     const house = document.querySelector('#house');
-    e.target.checked? house.classList.add('house_day'):house.classList.remove('house_day')
+    e.target.checked ? house.classList.add('house_day') : house.classList.remove('house_day')
 });
 
 
+//фильтры
+document.querySelector('#filterFloor').addEventListener('input', (e) => {
+    setFilters({
+        searchFloor: e.target.value
+    });
+    renderLodgers();
+});
 
+document.querySelector('#genderFilter').addEventListener('change', (e) => {
+    setFilters({
+        searchGender: e.target.value
+    });
+    renderLodgers();
+});
+
+let other = [];
+
+document.querySelector('#checkboxFilter').addEventListener('change', (e) => {
+
+    if (e.target.checked) {
+        other.push(e.target.value);
+    } else {
+        other.splice(other.indexOf(e.target.value), 1);
+    }
+    setFilters({
+        searchOther: other
+    });
+    renderLodgers();
+});
+
+document.querySelector('#filterRooms').addEventListener('change', (e) => {
+    setFilters({
+        searchRooms: e.target.value
+    });
+    renderLodgers();
+});
+
+document.querySelector('#filterReset').addEventListener('click', () => {
+    resetFilters();
+    renderLodgers();
+});
 
 
 //разобрать слайды
 const slideInformation = document.querySelector('.information__slide');
-const tab1 =document.querySelector('#addTab');
+const tab1 = document.querySelector('#addTab');
 const tab2 = document.querySelector('#filterTab');
 const panel1 = document.querySelector('.add-form');
 const panel2 = document.querySelector('.filter-form');
@@ -91,10 +133,9 @@ femaleLabelFilter.addEventListener('click', () => {
     genderSlideFilter.style.transform = "translateX(100%)"
 });
 
-document.querySelector('.house-block').addEventListener('click', (e)=> {
+document.querySelector('.house-block').addEventListener('click', (e) => {
     const floorForm = document.querySelector('#floorNumber');
     if (e.target.classList.contains('floor')) {
         floorForm.value = e.target.dataset.floor;
     }
-    console.log(e.target)
 });

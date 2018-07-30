@@ -1,7 +1,7 @@
 .information {
   width: 720px;
   overflow: hidden;
-  padding:30px 40px;
+  padding: 30px 40px;
 }
 
 .information-block {
@@ -49,13 +49,14 @@
     display: none;
   }
 }
+
 .slide + label {
   color: white;
 }
 
 .information__slide {
-   z-index: 10;
- }
+  z-index: 10;
+}
 
 .information__form-block {
   width: 1380px;

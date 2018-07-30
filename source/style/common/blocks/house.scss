@@ -4,7 +4,7 @@
 }
 
 .house-container {
-  padding-top: 85px;
+  padding-top: 75px;
   padding-left: 117px;
   display: flex;
 }
@@ -67,10 +67,12 @@
     transition: all .2s ease;
   }
 }
+
 #timeOfDay {
   position: absolute;
   opacity: 0;
 }
+
 #timeOfDay:checked + .daytime__toggle {
   &:before {
     content: url(../img/sun.svg);
@@ -79,7 +81,7 @@
   }
   span {
     transform: translateX(83px);
-    transition: all .2s cubic-bezier(.8,.4,.3,1.25);
+    transition: all .2s cubic-bezier(.8, .4, .3, 1.25);
   }
 }
 

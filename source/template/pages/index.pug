@@ -49,6 +49,7 @@ html
                     use(xlink:href="#floor" class='floor' y=569 fill="url(#linear-gradient_up)" data-floor=1)
                     rect(height=69 width=411 fill='var(--brick-color, #6D7EFA' y=703 x=25)
                     use(xlink:href='./assets/img/sprite.svg#bricks' fill='var(--balcony-color, #4647CC)' y=707 x=25 width=412 height=60.8)
+                .lodgers
                 .daytime
                     input(type='checkbox')#timeOfDay
                     label(for='timeOfDay').daytime__toggle
@@ -83,7 +84,7 @@ html
                                             label(for='female') Женский
                                 .form__item
                                     .field-name  Этаж
-                                    input.field(form='addForm' type='text' id='floorNumber' disabled required)
+                                    input.field(form='addForm' type='text' id='floorNumber' pattern='[1-5]' required)
                                 .form__item
                                     .field-name   Кол-во комнат
                                     svg.select__arrow
@@ -127,38 +128,38 @@ html
                             form.form__content#filterForm
                                 .form__item
                                     .field-name   Пол
-                                    .radio-block
+                                    .radio-block#genderFilter
                                         .slide_gender.slide_filter.slide
                                         .radio__item
-                                            input.field.radio(form='filterForm' type='radio' name='gender' id='maleFilter')
+                                            input.field.radio(form='filterForm' type='radio' name='gender' id='maleFilter' value='male')
                                             label(for='maleFilter') Мужской
                                         .radio__item
-                                            input.field.radio(form='filterForm' type='radio' name='gender' id='femaleFilter')
+                                            input.field.radio(form='filterForm' type='radio' name='gender' id='femaleFilter' value='female')
                                             label(for='femaleFilter') Женский
                                 .form__item
                                     .field-name   Кол-во комнат
                                     svg.select__arrow
                                         use(xlink:href='/assets/img/sprite.svg#arrow')
-                                    select.field.select(form='filterForm')
+                                    select.field.select(form='filterForm' id='filterRooms')
                                         option(value='') Выбрать
                                         option(value='1') 1
                                         option(value='2') 2
                                         option(value='3') 3
                                 .form__item
                                     .field-name   Дополнительно
-                                    .checkbox-block
+                                    .checkbox-block#checkboxFilter
                                         .checkbox__item
-                                            input(form='filterForm' type='checkbox' class='checkbox' id ='filterPets' value="pets")
+                                            input(form='filterForm' type='checkbox' class='checkbox' id ='filterPets' value="Домашние животные" data-index =0)
                                             label(for='filterPets') Домашние животные
                                         .checkbox__item
-                                            input(form='filterForm' type='checkbox' class='checkbox' id ='filterTV' value="tv")
+                                            input(form='filterForm' type='checkbox' class='checkbox' id ='filterTV' value="ТВ" data-index =1)
                                             label(for='filterTV') ТВ
                                         .checkbox__item
-                                            input(form='filterForm' type='checkbox' class='checkbox' id ='filterInternet' value="internet")
+                                            input(form='filterForm' type='checkbox' class='checkbox' id ='filterInternet' value="Интернет" data-index =2)
                                             label(for='filterInternet') Интернет
                                 .form__item
                                     .field-name  Этаж
-                                    input.field(form='filterForm' type='text' placeholder='Введите')
+                                    input.field(form='filterForm' type='text' placeholder='Введите' pattern='[1-5]' id='filterFloor')
                             .form__footer
                                 button.button#filterReset(form='filterForm' type='reset') Сброс фильтров
 

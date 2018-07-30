@@ -23,9 +23,11 @@
   padding: 0 35px;
   border-top: 1px solid #EAECF0;
 }
+
 .filter-form {
   height: auto;
 }
+
 input::placeholder {
   opacity: 0.2;
 }
@@ -64,7 +66,7 @@ input::placeholder {
   appearance: none;
   position: relative;
   &__arrow {
-  fill:black;
+    fill: black;
     width: 22px;
     height: 11px;
     position: absolute;
@@ -99,7 +101,7 @@ input::placeholder {
   cursor: pointer;
 }
 
-.radio:checked + label{
+.radio:checked + label {
   color: white;
 }
 
@@ -110,12 +112,13 @@ input::placeholder {
   flex: 1;
   height: 50px;
 }
+
 .checkbox__item {
   display: flex;
   align-items: center;
 }
 
-.checkbox{
+.checkbox {
   position: absolute;
   opacity: 0;
 }
@@ -138,6 +141,7 @@ input::placeholder {
   border-radius: 50%;
   box-sizing: border-box;
 }
+
 .checkbox + label:after {
   content: '';
   position: absolute;
@@ -152,7 +156,7 @@ input::placeholder {
   transition: .2s;
 }
 
-.checkbox:checked + label{
+.checkbox:checked + label {
   color: black;
 }
 

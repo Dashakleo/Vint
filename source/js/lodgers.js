@@ -19,11 +19,11 @@ const saveLodgers = () => {
 
 const createLodger = (inputElements) => {
 
-    const floorNeighbours = lodgers.filter((lodger)=> {
+    const floorNeighbours = lodgers.filter((lodger) => {
         return lodger.floor === inputElements.floorNumber.value
     });
 
-    if (!inputElements.floorNumber.value)  {
+    if (!inputElements.floorNumber.value) {
         alert('Введите этаж');
         return;
     }
@@ -41,7 +41,7 @@ const createLodger = (inputElements) => {
     });
     lodgers.push({
         name: inputElements.name.value,
-        gender: inputElements.male.checked? 'male' : 'female',
+        gender: inputElements.male.checked ? 'male' : 'female',
         floor: inputElements.floorNumber.value,
         floorOrder: floorNeighbours.length,
         rooms: inputElements.rooms.value,
