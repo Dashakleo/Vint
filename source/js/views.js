@@ -2,13 +2,6 @@
 import {getLodgers} from "./lodgers.js";
 import {getFilters} from './filters.js';
 
-
-Array.prototype.diff = function (a) {
-    return this.filter(function (i) {
-        return !(a.indexOf(i) > -1);
-    });
-};
-
 const renderLodgers = () => {
     const house = document.querySelector('.lodgers');
     const {searchFloor, searchGender, searchOther, searchRooms} = getFilters();
