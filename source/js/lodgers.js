@@ -23,10 +23,6 @@ const createLodger = (inputElements) => {
         return lodger.floor === inputElements.floorNumber.value
     });
 
-    if (!inputElements.floorNumber.value) {
-        alert('Введите этаж');
-        return;
-    }
     if (floorNeighbours.length >= 3) {
         alert('Этаж занят');
         return;
