@@ -145,3 +145,8 @@ document.querySelector('.house-block').addEventListener('click', (e) => {
         floorForm.value = e.target.dataset.floor;
     }
 });
+
+//Ресет всего при перезагрузке страницы
+filterResetButton.click();
+addResetButton.click();
+document.querySelector('#timeOfDay').checked = false;
