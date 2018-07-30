@@ -69,7 +69,7 @@ document.querySelector('#filterReset').addEventListener('click', () => {
 });
 
 
-//разобрать слайды
+//Слайд меню
 const slideInformation = document.querySelector('.information__slide');
 const tab1 = document.querySelector('#addTab');
 const tab2 = document.querySelector('#filterTab');
@@ -94,6 +94,8 @@ function slideRight() {
 tab1.addEventListener('click', slideLeft);
 tab2.addEventListener('click', slideRight);
 
+
+//Слайд смены пола
 const maleLabel = document.querySelector('#male');
 const femaleLabel = document.querySelector('#female');
 const genderSlide = document.querySelector('.slide_gender');
@@ -113,6 +115,8 @@ femaleLabel.addEventListener('click', () => {
     genderSlide.style.transform = "translateX(100%)"
 });
 
+
+//Слайд смены пола в фильтре
 const maleLabelFilter = document.querySelector('#maleFilter');
 const femaleLabelFilter = document.querySelector('#femaleFilter');
 const genderSlideFilter = document.querySelector('.slide_filter');
@@ -133,6 +137,8 @@ femaleLabelFilter.addEventListener('click', () => {
     genderSlideFilter.style.transform = "translateX(100%)"
 });
 
+
+//Запись этажа при клике в соответствующее поле
 document.querySelector('.house-block').addEventListener('click', (e) => {
     const floorForm = document.querySelector('#floorNumber');
     if (e.target.classList.contains('floor')) {
