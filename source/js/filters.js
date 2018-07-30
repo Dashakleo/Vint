@@ -27,6 +27,6 @@ const resetFilters = () => {
     filters.searchGender = '';
     filters.searchOther = [];
     filters.searchRooms = null
-}
+};
 
 export {getFilters, setFilters, resetFilters}

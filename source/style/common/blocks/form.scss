@@ -65,6 +65,8 @@ input::placeholder {
 .select {
   appearance: none;
   position: relative;
+  z-index: 15;
+  background: transparent;
   &__arrow {
     fill: black;
     width: 22px;

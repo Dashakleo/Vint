@@ -73,8 +73,6 @@ document.querySelector('#filterReset').addEventListener('click', () => {
 const slideInformation = document.querySelector('.information__slide');
 const tab1 = document.querySelector('#addTab');
 const tab2 = document.querySelector('#filterTab');
-const panel1 = document.querySelector('.add-form');
-const panel2 = document.querySelector('.filter-form');
 const formBlock = document.querySelector('.information__form-block');
 
 function slideLeft() {
